@@ -6,14 +6,14 @@ on:
 
 jobs:
  build:
-  runs-on: ubuntn-lastest
+  runs-on: ubuntu-latest
 
   steps:
    - name: Checkout code
      uses: actions/checkout@v3
 
    - name: Set up Python
-     uses: actions/setup-python@3
+     uses: actions/setup-python@v3
      with:
        python-version: '3.11'
 
@@ -29,6 +29,7 @@ jobs:
        curl http://127.0.0.1:8001
 
    - name: Stop and remove Docker container
+     if: always()
      run: |
        docker container stop myflask-ac
        docker container rm myflask-ac    
